@@ -1,4 +1,4 @@
-module github.com/deploys-app/api
+module github.com/jetder-core/api
 
 go 1.23
 

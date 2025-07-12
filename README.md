@@ -1,2 +1,3 @@
-# Deploys.app - API
-Deploys.app API interfaces
+# Jetder - API
+
+Jetder API interfaces

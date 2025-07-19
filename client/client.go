@@ -12,7 +12,7 @@ import (
 	"github.com/jetder-core/api"
 )
 
-const endpoint = "https://api.deploys.app/"
+const endpoint = "https://api.jetder.com/"
 
 type Error struct {
 	Message string `json:"message"`

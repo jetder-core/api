@@ -32,7 +32,7 @@ func (m *DomainCreate) Valid() error {
 	v.Must(m.Project != "", "project required")
 	v.Must(m.Location != "", "location required")
 	v.Must(govalidator.IsDNSName(m.Domain), "domain invalid")
-	v.Must(!strings.HasSuffix(m.Domain, ".deploys.app"), "domain invalid")
+	v.Must(!strings.HasSuffix(m.Domain, ".jetder.com"), "domain invalid")
 
 	return WrapValidate(v)
 }

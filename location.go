@@ -37,6 +37,9 @@ func (m *LocationListResult) Table() [][]string {
 
 type LocationItem struct {
 	ID                string           `json:"id" yaml:"id"`
+	Provider          string           `json:"provider" yaml:"provider"`
+	Region            string           `json:"region" yaml:"region"`
+	CPUType           string           `json:"cpuType" yaml:"cpuType"`
 	DomainSuffix      string           `json:"domainSuffix" yaml:"domainSuffix"`
 	Endpoint          string           `json:"endpoint" yaml:"endpoint"`
 	CName             string           `json:"cname" yaml:"cname"`

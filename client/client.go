@@ -65,6 +65,10 @@ func (c *Client) Location() api.Location {
 	return locationClient{c}
 }
 
+func (c *Client) Organization() api.Organization {
+	return organizationClient{c}
+}
+
 func (c *Client) Project() api.Project {
 	return projectClient{c}
 }

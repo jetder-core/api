@@ -238,11 +238,6 @@ func (m *DeploymentDeploy) Valid() error {
 	m.Image = strings.ReplaceAll(m.Image, " ", "")  // remove all space in image
 	m.Image = strings.ReplaceAll(m.Image, "\t", "") // remove all tab character
 
-	// TODO: autofill location until all user migrate
-	if m.Location == "" {
-		m.Location = "gke.cluster-rcf2"
-	}
-
 	v := validator.New()
 
 	v.Must(m.Location != "", "location required")
@@ -419,11 +414,6 @@ type DeploymentGet struct {
 
 func (m *DeploymentGet) Valid() error {
 	m.Name = strings.TrimSpace(m.Name)
-
-	// TODO: autofill location until all user migrate
-	if m.Location == "" {
-		m.Location = "gke.cluster-rcf2"
-	}
 
 	v := validator.New()
 

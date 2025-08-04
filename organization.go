@@ -13,6 +13,7 @@ type Organization interface {
 	Get(ctx context.Context, m *OrganizationGet) (*OrganizationItem, error)
 	Update(ctx context.Context, m *OrganizationUpdate) (*Empty, error)
 	Delete(ctx context.Context, m *OrganizationDelete) (*Empty, error)
+	Projects(ctx context.Context, m *OrganizationProjects) (*OrganizationProjectsResult, error)
 }
 
 type OrganizationItem struct {
@@ -84,4 +85,22 @@ func (m *OrganizationDelete) Valid() error {
 	v.Must(m.ID != "", "id required")
 
 	return WrapValidate(v)
+}
+
+type OrganizationProjects struct {
+	ID string `json:"id" yaml:"id"`
+}
+
+func (m *OrganizationProjects) Valid() error {
+	m.ID = strings.TrimSpace(m.ID)
+	m.ID = strings.ToLower(m.ID)
+
+	v := validator.New()
+	v.Must(m.ID != "", "id required")
+
+	return WrapValidate(v)
+}
+
+type OrganizationProjectsResult struct {
+	Items []*ProjectItem `json:"items" yaml:"items"`
 }

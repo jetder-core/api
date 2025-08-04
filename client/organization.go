@@ -54,3 +54,12 @@ func (c organizationClient) Delete(ctx context.Context, m *api.OrganizationDelet
 	}
 	return &res, nil
 }
+
+func (c organizationClient) Projects(ctx context.Context, m *api.OrganizationProjects) (*api.OrganizationProjectsResult, error) {
+	var res api.OrganizationProjectsResult
+	err := c.inv.invoke(ctx, "organization.projects", m, &res)
+	if err != nil {
+		return nil, err
+	}
+	return &res, nil
+}

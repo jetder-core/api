@@ -113,6 +113,10 @@ func (c *Client) Email() api.Email {
 	return emailClient{c}
 }
 
+func (c *Client) Secret() api.Secret {
+	return secretClient{c}
+}
+
 func (c *Client) Collector() api.Collector {
 	return collectorClient{c}
 }

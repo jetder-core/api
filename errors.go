@@ -50,6 +50,11 @@ var (
 	ErrDomainDisableCDNNotEnabled    = newError("api: domain disable cdn not enabled for this project")
 	ErrEmailDomainNotFound           = newError("api: email domain not found")
 	ErrOrganizationNotFound          = newError("api: organization not found")
+	ErrOrganizationSIDNotAvailable   = newError("api: organization sid not available")
+	ErrOrganizationRoleNotFound      = newError("api: organization role not found")
+	ErrOrganizationRoleAlreadyExists = newError("api: organization role already exists")
+	ErrSecretNotFound                = newError("api: secret not found")
+	ErrEnvGroupNotFound              = newError("api: env group not found")
 )
 
 var AllErrors []error

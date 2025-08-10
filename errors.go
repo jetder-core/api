@@ -49,6 +49,7 @@ var (
 	ErrDomainPurgeInvalid            = newError("api: domain purge invalid")
 	ErrDomainDisableCDNNotEnabled    = newError("api: domain disable cdn not enabled for this project")
 	ErrEmailDomainNotFound           = newError("api: email domain not found")
+	ErrOrganizationNotFound          = newError("api: organization not found")
 )
 
 var AllErrors []error

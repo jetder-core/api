@@ -76,6 +76,18 @@ var permissions = []string{
 	"registry.pull",
 	"registry.list",
 	"registry.get",
+	"secret.*",
+	"secret.create",
+	"secret.delete",
+	"secret.list",
+	"secret.get",
+	"secret.delete",
+	"envgroup.*",
+	"envgroup.create",
+	"envgroup.delete",
+	"envgroup.list",
+	"envgroup.get",
+	"envgroup.delete",
 }
 
 func Permissions() []string {

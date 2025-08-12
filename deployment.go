@@ -216,6 +216,7 @@ type DeploymentDeploy struct {
 	Env              map[string]string   `json:"env" yaml:"env"`             // override all env
 	AddEnv           map[string]string   `json:"addEnv" yaml:"addEnv"`       // add env to old revision env
 	RemoveEnv        []string            `json:"removeEnv" yaml:"removeEnv"` // remove env from old revision env
+	EnvGroups        []string            `json:"envGroups" yaml:"envGroups"` // nil for doesn't update, [] to set to empty
 	Command          []string            `json:"command" yaml:"command"`
 	Args             []string            `json:"args" yaml:"args"`
 	WorkloadIdentity *string             `json:"workloadIdentity" yaml:"workloadIdentity"` // workload identity name
@@ -373,6 +374,7 @@ type DeploymentItem struct {
 	Revision         int64              `json:"revision" yaml:"revision"`
 	Image            string             `json:"image" yaml:"image"`
 	Env              map[string]string  `json:"env" yaml:"env"`
+	EnvGroups        []string           `json:"envGroups" yaml:"envGroups"`
 	Command          []string           `json:"command" yaml:"command"`
 	Args             []string           `json:"args" yaml:"args"`
 	WorkloadIdentity string             `json:"workloadIdentity" yaml:"workloadIdentity"`

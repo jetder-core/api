@@ -206,6 +206,7 @@ type DeploymentDeploy struct {
 	Project          string              `json:"project" yaml:"project"`
 	Location         string              `json:"location" yaml:"location"`
 	Name             string              `json:"name" yaml:"name"`
+	Branch           string              `json:"branch" yaml:"branch"`
 	Image            string              `json:"image" yaml:"image"`
 	MinReplicas      *int                `json:"minReplicas" yaml:"minReplicas"`
 	MaxReplicas      *int                `json:"maxReplicas" yaml:"maxReplicas"`
@@ -370,6 +371,7 @@ type DeploymentItem struct {
 	Project          string             `json:"project" yaml:"project"`
 	Location         string             `json:"location" yaml:"location"`
 	Name             string             `json:"name" yaml:"name"`
+	Branch           string             `json:"branch" yaml:"branch"`
 	Type             DeploymentType     `json:"type" yaml:"type"`
 	Revision         int64              `json:"revision" yaml:"revision"`
 	Image            string             `json:"image" yaml:"image"`
@@ -411,6 +413,7 @@ type DeploymentGet struct {
 	Location string `json:"location" yaml:"location"`
 	Project  string `json:"project" yaml:"project"`
 	Name     string `json:"name" yaml:"name"`
+	Branch   string `json:"branch" yaml:"branch"`
 	Revision int    `json:"revision" yaml:"revision"` // 0 = latest
 }
 
@@ -432,6 +435,7 @@ type DeploymentRevisions struct {
 	Location string `json:"location" yaml:"location"`
 	Project  string `json:"project" yaml:"project"`
 	Name     string `json:"name" yaml:"name"`
+	Branch   string `json:"branch" yaml:"branch"`
 }
 
 func (m *DeploymentRevisions) Valid() error {
@@ -455,6 +459,7 @@ type DeploymentResume struct {
 	Location string `json:"location" yaml:"location"`
 	Project  string `json:"project" yaml:"project"`
 	Name     string `json:"name" yaml:"name"`
+	Branch   string `json:"branch" yaml:"branch"`
 }
 
 func (m *DeploymentResume) Valid() error {
@@ -474,6 +479,7 @@ type DeploymentPause struct {
 	Location string `json:"location" yaml:"location"`
 	Project  string `json:"project" yaml:"project"`
 	Name     string `json:"name" yaml:"name"`
+	Branch   string `json:"branch" yaml:"branch"`
 }
 
 func (m *DeploymentPause) Valid() error {
@@ -493,6 +499,7 @@ type DeploymentRollback struct {
 	Location string `json:"location" yaml:"location"`
 	Project  string `json:"project" yaml:"project"`
 	Name     string `json:"name" yaml:"name"`
+	Branch   string `json:"branch" yaml:"branch"`
 	Revision int    `json:"revision" yaml:"revision"`
 }
 
@@ -514,6 +521,7 @@ type DeploymentDelete struct {
 	Location string `json:"location" yaml:"location"`
 	Project  string `json:"project" yaml:"project"`
 	Name     string `json:"name" yaml:"name"`
+	Branch   string `json:"branch" yaml:"branch"`
 }
 
 func (m *DeploymentDelete) Valid() error {
@@ -571,6 +579,7 @@ type DeploymentMetrics struct {
 	Location  string                     `json:"location" yaml:"location"`
 	Project   string                     `json:"project" yaml:"project"`
 	Name      string                     `json:"name" yaml:"name"`
+	Branch    string                     `json:"branch" yaml:"branch"`
 	TimeRange DeploymentMetricsTimeRange `json:"timeRange" yaml:"timeRange"`
 }
 

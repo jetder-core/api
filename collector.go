@@ -48,12 +48,11 @@ type CollectorSetDeploymentUsage struct {
 }
 
 type CollectorDeploymentUsageItem struct {
-	ProjectID      int64   `json:"projectId,string" yaml:"projectId"`
-	DeploymentName string  `json:"deploymentName" yaml:"deploymentName"`
-	Pod            string  `json:"pod" yaml:"pod"`
-	Name           string  `json:"name" yaml:"name"`
-	Value          float64 `json:"value" yaml:"value"`
-	At             int64   `json:"at" yaml:"at"`
+	DeploymentID int64   `json:"deploymentId,string" yaml:"deploymentId"`
+	Pod          string  `json:"pod" yaml:"pod"`
+	Name         string  `json:"name" yaml:"name"`
+	Value        float64 `json:"value" yaml:"value"`
+	At           int64   `json:"at" yaml:"at"`
 }
 
 type CollectorSetDiskUsage struct {

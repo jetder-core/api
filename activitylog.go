@@ -3,6 +3,7 @@ package api
 import (
 	"context"
 	"encoding/json"
+	"time"
 
 	"github.com/moonrhythm/validator"
 )
@@ -41,5 +42,5 @@ type ActivityLogItem struct {
 	Email     string          `json:"email" yaml:"email"`
 	Action    string          `json:"action" yaml:"action"`
 	Params    json.RawMessage `json:"params" yaml:"params"`
-	CreatedAt int64           `json:"createdAt" yaml:"createdAt"`
+	CreatedAt time.Time       `json:"createdAt" yaml:"createdAt"`
 }

@@ -18,6 +18,7 @@ type Project interface {
 	Update(ctx context.Context, m *ProjectUpdate) (*Empty, error)
 	Delete(ctx context.Context, m *ProjectDelete) (*Empty, error)
 	Usage(ctx context.Context, m *ProjectUsage) (*ProjectUsageResult, error)
+	SetWebhook(ctx context.Context, m *SetProjectWebhook) (*Empty, error)
 }
 
 type ProjectCreate struct {
@@ -91,6 +92,7 @@ type ProjectItem struct {
 	Quota          ProjectQuota  `json:"quota" yaml:"quota"`
 	Config         ProjectConfig `json:"config" yaml:"config"`
 	CreatedAt      time.Time     `json:"createdAt" yaml:"createdAt"`
+	WebhookURL     string        `json:"webhookUrl" yaml:"webhookUrl"`
 }
 
 func (m *ProjectItem) Table() [][]string {
@@ -159,4 +161,19 @@ func (m *ProjectUsageResult) Table() [][]string {
 		{"Replica", humanize.CommafWithDigits(m.Replica, 2)},
 	}
 	return table
+}
+
+type SetProjectWebhook struct {
+	Project string `json:"project" yaml:"project"`
+	URL     string `json:"url" yaml:"url"`
+}
+
+func (m *SetProjectWebhook) Valid() error {
+	m.Project = strings.TrimSpace(m.Project)
+
+	v := validator.New()
+
+	v.Must(m.Project != "", "project required")
+
+	return WrapValidate(v)
 }

@@ -63,3 +63,12 @@ func (c projectClient) Usage(ctx context.Context, m *api.ProjectUsage) (*api.Pro
 	}
 	return &res, nil
 }
+
+func (c projectClient) SetWebhook(ctx context.Context, m *api.SetProjectWebhook) (*api.Empty, error) {
+	var res api.Empty
+	err := c.inv.invoke(ctx, "project.setWebhook", m, &res)
+	if err != nil {
+		return nil, err
+	}
+	return &res, nil
+}

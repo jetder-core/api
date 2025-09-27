@@ -604,6 +604,7 @@ type DeploymentMetricsResult struct {
 	Memory      []*DeploymentMetricsLine `json:"memory" yaml:"memory"`
 	MemoryLimit []*DeploymentMetricsLine `json:"memoryLimit" yaml:"memoryLimit"`
 	Requests    []*DeploymentMetricsLine `json:"requests" yaml:"requests"`
+	RequestP95  []*DeploymentMetricsLine `json:"requestP95" yaml:"requestP95"`
 	Egress      []*DeploymentMetricsLine `json:"egress" yaml:"egress"`
 }
 

@@ -17,6 +17,8 @@ type Billing interface {
 	Report(ctx context.Context, m *BillingReport) (*BillingReportResult, error)
 	SKUs(ctx context.Context, m *Empty) (*BillingSKUs, error)
 	Project(ctx context.Context, m *BillingProject) (*BillingProjectResult, error)
+	SetPaymentMethod(ctx context.Context, m *BillingSetPaymentMethod) (*Empty, error)
+	GetPaymentMethod(ctx context.Context, m *Empty) (*BillingPaymentMethod, error)
 }
 
 type BillingCreate struct {
@@ -171,4 +173,25 @@ type BillingProject struct {
 
 type BillingProjectResult struct {
 	Price float64 `json:"price" yaml:"price"`
+}
+
+type BillingSetPaymentMethod struct {
+	PaymentMethodID string `json:"paymentMethodId" yaml:"paymentMethodId"`
+}
+
+func (m *BillingSetPaymentMethod) Valid() error {
+	v := validator.New()
+
+	v.Must(m.PaymentMethodID != "", "paymentMethodId required")
+
+	return WrapValidate(v)
+}
+
+type BillingPaymentMethod struct {
+	PaymentMethodID string `json:"paymentMethodId" yaml:"paymentMethodId"`
+	Type            string `json:"type" yaml:"type"`
+	Brand           string `json:"brand" yaml:"brand"`
+	Last4           string `json:"last4" yaml:"last4"`
+	ExpMonth        string `json:"expMonth" yaml:"expMonth"`
+	ExpYear         string `json:"expYear" yaml:"expYear"`
 }

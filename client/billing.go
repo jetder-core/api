@@ -100,7 +100,7 @@ func (c billingClient) SetPaymentMethod(ctx context.Context, m *api.BillingSetPa
 	return &res, nil
 }
 
-func (c billingClient) GetPaymentMethod(ctx context.Context, m *api.Empty) (*api.BillingPaymentMethod, error) {
+func (c billingClient) GetPaymentMethod(ctx context.Context, m *api.BillingGetPaymentMethod) (*api.BillingPaymentMethod, error) {
 	var res api.BillingPaymentMethod
 	err := c.inv.invoke(ctx, "billing.getPaymentMethod", m, &res)
 	if err != nil {

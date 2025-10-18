@@ -19,7 +19,7 @@ type Billing interface {
 	Project(ctx context.Context, m *BillingProject) (*BillingProjectResult, error)
 	SetupPaymentMethod(ctx context.Context, m *BillingSetupPaymentMethod) (*BillingSetupPaymentMethodResult, error)
 	SetPaymentMethod(ctx context.Context, m *BillingSetPaymentMethod) (*Empty, error)
-	GetPaymentMethod(ctx context.Context, m *Empty) (*BillingPaymentMethod, error)
+	GetPaymentMethod(ctx context.Context, m *BillingGetPaymentMethod) (*BillingPaymentMethod, error)
 }
 
 type BillingCreate struct {
@@ -202,6 +202,18 @@ func (m *BillingSetPaymentMethod) Valid() error {
 
 	v.Must(m.ID > 0, "id required")
 	v.Must(m.PaymentMethodID != "", "paymentMethodId required")
+
+	return WrapValidate(v)
+}
+
+type BillingGetPaymentMethod struct {
+	ID int64 `json:"id,string" yaml:"id"`
+}
+
+func (m *BillingGetPaymentMethod) Valid() error {
+	v := validator.New()
+
+	v.Must(m.ID > 0, "id required")
 
 	return WrapValidate(v)
 }

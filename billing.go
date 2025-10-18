@@ -176,12 +176,14 @@ type BillingProjectResult struct {
 }
 
 type BillingSetPaymentMethod struct {
+	ID              int64  `json:"id,string" yaml:"id"`
 	PaymentMethodID string `json:"paymentMethodId" yaml:"paymentMethodId"`
 }
 
 func (m *BillingSetPaymentMethod) Valid() error {
 	v := validator.New()
 
+	v.Must(m.ID > 0, "id required")
 	v.Must(m.PaymentMethodID != "", "paymentMethodId required")
 
 	return WrapValidate(v)

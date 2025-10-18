@@ -223,6 +223,6 @@ type BillingPaymentMethod struct {
 	Type            string `json:"type" yaml:"type"`
 	Brand           string `json:"brand" yaml:"brand"`
 	Last4           string `json:"last4" yaml:"last4"`
-	ExpMonth        string `json:"expMonth" yaml:"expMonth"`
-	ExpYear         string `json:"expYear" yaml:"expYear"`
+	ExpMonth        int64  `json:"expMonth" yaml:"expMonth"`
+	ExpYear         int64  `json:"expYear" yaml:"expYear"`
 }

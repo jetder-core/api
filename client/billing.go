@@ -82,6 +82,15 @@ func (c billingClient) Project(ctx context.Context, m *api.BillingProject) (*api
 	return &res, nil
 }
 
+func (c billingClient) SetupPaymentMethod(ctx context.Context, m *api.BillingSetupPaymentMethod) (*api.BillingSetupPaymentMethodResult, error) {
+	var res api.BillingSetupPaymentMethodResult
+	err := c.inv.invoke(ctx, "billing.setupPaymentMethod", m, &res)
+	if err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
 func (c billingClient) SetPaymentMethod(ctx context.Context, m *api.BillingSetPaymentMethod) (*api.Empty, error) {
 	var res api.Empty
 	err := c.inv.invoke(ctx, "billing.setPaymentMethod", m, &res)

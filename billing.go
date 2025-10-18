@@ -17,6 +17,7 @@ type Billing interface {
 	Report(ctx context.Context, m *BillingReport) (*BillingReportResult, error)
 	SKUs(ctx context.Context, m *Empty) (*BillingSKUs, error)
 	Project(ctx context.Context, m *BillingProject) (*BillingProjectResult, error)
+	SetupPaymentMethod(ctx context.Context, m *BillingSetupPaymentMethod) (*BillingSetupPaymentMethodResult, error)
 	SetPaymentMethod(ctx context.Context, m *BillingSetPaymentMethod) (*Empty, error)
 	GetPaymentMethod(ctx context.Context, m *Empty) (*BillingPaymentMethod, error)
 }
@@ -173,6 +174,22 @@ type BillingProject struct {
 
 type BillingProjectResult struct {
 	Price float64 `json:"price" yaml:"price"`
+}
+
+type BillingSetupPaymentMethod struct {
+	ID int64 `json:"id,string" yaml:"id"`
+}
+
+func (m *BillingSetupPaymentMethod) Valid() error {
+	v := validator.New()
+
+	v.Must(m.ID > 0, "id required")
+
+	return WrapValidate(v)
+}
+
+type BillingSetupPaymentMethodResult struct {
+	Secret string `json:"secret"`
 }
 
 type BillingSetPaymentMethod struct {

@@ -8,6 +8,7 @@ import (
 type GitConnect interface {
 	Bind(ctx context.Context, m *GitConnectBind) (*GitConnectBindResult, error)
 	BindStatus(ctx context.Context) (*GitConnectBindStatus, error)
+	GetRepos(ctx context.Context, m *GitConnectGetRepos) (*GitConnectGetReposResult, error)
 	Create(ctx context.Context, m *GitConnectCreate) (*Empty, error)
 	Update(ctx context.Context, m *GitConnectUpdate) (*Empty, error)
 	List(ctx context.Context, m *GitConnectList) (*GitConnectListResult, error)
@@ -31,6 +32,18 @@ type GitConnectBindStatus struct {
 	Github    *GitConnectStatusProvider `json:"github" yaml:"github"`
 	Gitlab    *GitConnectStatusProvider `json:"gitlab" yaml:"gitlab"`
 	Bitbucket *GitConnectStatusProvider `json:"bitbucket" yaml:"bitbucket"`
+}
+
+type GitConnectGetRepos struct {
+	Provider string `json:"provider" yaml:"provider"`
+}
+
+type GitConnectGetReposResult struct {
+	Items []*GitConnectRepo `json:"items" yaml:"items"`
+}
+
+type GitConnectRepo struct {
+	Name string `json:"name" yaml:"name"`
 }
 
 type GitConnectStatusProvider struct {

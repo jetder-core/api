@@ -57,6 +57,8 @@ var (
 	ErrOrganizationRoleAlreadyExists  = newError("api: organization role already exists")
 	ErrSecretNotFound                 = newError("api: secret not found")
 	ErrEnvGroupNotFound               = newError("api: env group not found")
+	ErrGitUnknownProvider             = newError("api: git provider unknown")
+	ErrGitTokenInvalid                = newError("api: git token invalid")
 )
 
 var AllErrors []error

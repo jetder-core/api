@@ -54,6 +54,7 @@ type GitConnectCreate struct {
 	Project          string              `json:"project" yaml:"project"`
 	Location         string              `json:"location" yaml:"location"`
 	Name             string              `json:"name" yaml:"name"`
+	Provider         string              `json:"provider" yaml:"provider"`
 	Origin           string              `json:"origin" yaml:"origin"`
 	ProductionBranch string              `json:"productionBranch" yaml:"productionBranch"`
 	PreviewBranch    string              `json:"previewBranch" yaml:"previewBranch"`
